@@ -12,18 +12,18 @@ play_game() {
   echo "Try to guess how many files are there in current directory!"
 
   local count=$(count_files)
-  local guess_count=0
+  local file_count=0
   local user_guess
 
   while true; do
     read -p "Your guess: " user_guess
-    ((guess_count++))
+    ((file_count++))
 
     # Compare the user's guess with the actual file count using numerical comparison operators.
-    if (( user_guess == secret_number )); then
-      echo "Congratulations! You guessed the correct number of files: $count, in $guess_count tries."
+    if (( user_guess == count )); then
+      echo "Congratulations! You guessed the correct number of files: $count, in $file_count tries."
       break
-    elif (( user_guess < secret_number )); then
+    elif (( user_guess < count )); then
       echo "Guess is too low. try again."
     else
       echo "guess is too high. try again."
